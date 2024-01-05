@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Registration</h2>
+<form class="ecl-menu ecl-menu--group1 ecl-menu--transition " action="/register" method="POST">
+    <label for="nickname">Nickname:</label><br>
+    <input type="text" id="nickname" name="nickname"><br>
+
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email"><br>
+
+    <label for="password">Password:</label><br>
+    <label for="password">Password again:</label><br>
+    <input type="password" id="password" name="password"><br>
+
+    <input type="submit" value="Register">
+</form>
+{% endblock %}

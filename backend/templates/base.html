@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/theEuStyles.css') }}" rel="stylesheet">
+
+    <link rel="stylesheet" media="all"
+        href="/sites/default/files/css/css_J-7wAGc7RBWbbcG7KF9pigwqhelpp8j9s2FhPU4Ih58.css?delta=0&amp;language=en&amp;theme=ewcms_theme&amp;include=eJxVj0GOwzAIRS_kqY9kYYcmSBgswGlz-2Y0aatZsOB9eALFEht2zE37UEGJwlQN7Cg4k2J5YA1V9rzYHMC3d__jHSxYYUFLfnhgzxUcf3f-jPgMNAEuvq9fOowkEj5a94vcCXkpn2lqKlfeJwcxyTqB84WgbSSnzECcIUiliJ437_hPiq34tB2PNMBgNRjb54UvuU0ZszL5hkvyAf0syVrv0xsEvgB0sHGk" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <nav style="background-color: #333 !important;">
+        <div class="container-fluid">
+
+            <p class="fs-6">{{ random_fact }}</p>
+
+        </div>
+    </nav>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a href="{{ url_for('home') }}" class="noUnderline">
+                <!-- Move the Yazyk logo outside the paragraph tag -->
+                <img src="{{ url_for('static', filename='images/pranik_logo_nobody.png') }}" alt="Yazyk Logo" class="logo-img">
+                <p class="YazykLogo">
+                    <img src="{{ url_for('static', filename='images/pranik_logo_no_head.png') }}" alt="Yazyk Logo" class="logo-img-no-head">
+                </p>
+            </a>
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-warning" type="button">Search</button>
+            </form>
+        </div>
+    </nav>
+    
+
+    <div id="block-ewcms-theme-horizontal-menu">
+        <nav class="ecl-menu ecl-menu--group1 ecl-menu--transition" data-ecl-menu="" data-ecl-menu-max-lines="2"
+            data-ecl-auto-init="Menu" aria-expanded="false" role="navigation" aria-label="Site navigation"
+            data-ecl-auto-initialized="true">
+
+            <div class="ecl-container ecl-menu__container">
+                <a class="ecl-link ecl-link--standalone ecl-menu__open" href="" data-ecl-menu-open="">
+
+                    <section class="ecl-menu__inner" data-ecl-menu-inner="">
+                        <button
+                            class="ecl-button ecl-button--ghost ecl-menu__item ecl-menu__items-previous ecl-menu__item--current"
+                            type="button" data-ecl-menu-items-previous="" tabindex="-1" style="display: none;"></button>
+
+                        <ul class="ecl-menu__list" data-ecl-menu-list="" style="left: 210px;">
+                            <li class="ecl-menu__item ecl-menu__item--current d-flex justify-content-end align-items-center"
+                                data-ecl-menu-item="" aria-expanded="false">
+                                <a href="{{ url_for('home') }}" class="ecl-menu__link ecl-menu__link--current"
+                                    data-ecl-menu-link="" style="width: 100%;">Home</a>
+                            </li>
+
+                            <li class="ecl-menu__item ecl-menu__item--has-children ecl-menu__item--col2">
+                                <a href="#" class="ecl-menu__link">Course</a>
+                            </li>
+
+
+
+                            <li class="ecl-menu__item">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-danger ecl-menu__link">Tools</button>
+                                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span class="visually-hidden ecl-menu__link">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="{{ url_for('interpret') }}">Interpret</a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">Conversations</a></li>
+                                        <li><a class="dropdown-item" href="#">Music</a></li>
+                                        <li><a class="dropdown-item" href="#">Texts</a></li>
+                                        <li><a class="dropdown-item" href="#">Learn Alphabets</a></li>
+
+                                    </ul>
+                                </div>
+
+                            </li>
+                            <li class="ecl-menu__item ecl-menu__item--has-children ecl-menu__item--col2">
+                                <a href="#" class="ecl-menu__link">My Flashcards</a>
+                            </li>
+
+                            <li class="ecl-menu__item">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-danger ecl-menu__link">Profile [-----]</button>
+                                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span class="visually-hidden ecl-menu__link">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="{{ url_for('login') }}">Login</a></li>
+                                        <li><a class="dropdown-item" href="{{ url_for('register') }}">Register</a></li>
+                                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">About Yazyk</a></li>
+                                    </ul>
+                                </div>
+
+                            </li>
+                        </ul>
+                    </section>
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <div id="content">
+        {% block content %}
+        <!-- Default content goes here -->
+        {% endblock %}
+    </div>
+
+
+
+    <!DOCTYPE html>
+    <html>
+
+    <head>
+        <style>
+            /* Your existing styles here */
+            .asgardHP-lang-list {
+                display: flex;
+                overflow-x: auto;
+                width: 100%;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <br><br>
+        <div class="asgardHP-lang-list sm:mx-1 overflow-auto flex">
+            <a href="">
+                <img height="62" width="62" class="inline-block mr-2 rounded-2 language-icon"
+                    style="background:#FFCCC9;border:none;"
+                    src="https://scdn.italki.com/ng/static/image/asgardhp/english.svg" alt="english teacher">
+            </a>
+            <a href="">
+                <img height="62" width="62" class="inline-block mr-2 rounded-2 language-icon"
+                    src="https://scdn.italki.com/ng/static/image/asgardhp/japanese.svg" alt="japanese teacher">
+            </a>
+            <a href="#">
+                <img height="62" width="62" class="inline-block mr-2 rounded-2 language-icon"
+                    src="https://scdn.italki.com/ng/static/image/asgardhp/spanish.svg" alt="spanish teacher">
+            </a>
+            <a href="#">
+                <img height="62" width="62" class="inline-block mr-2 rounded-2 language-icon" <img height="62"
+                    width="62" class="inline-block mr-2 rounded-2 language-icon"
+                    src="https://scdn.italki.com/ng/static/image/asgardhp/chinese.svg" alt="chinese teacher">
+            </a>
+            <a href="#">
+                <img height="62" width="62" class="inline-block mr-2 rounded-2 language-icon"
+                    src="https://scdn.italki.com/ng/static/image/asgardhp/french.svg" alt="french teacher">
+            </a>
+            <a href="#">
+                <img height="62" width="62" class="inline-block mr-2 rounded-2 language-icon"
+                    src="https://scdn.italki.com/ng/static/image/asgardhp/italian.svg" alt="italian teacher">
+            </a>
+            <a href="#">
+                <img height="62" width="62" class="inline-block mr-2 rounded-2 language-icon"
+                    src="https://scdn.italki.com/ng/static/image/asgardhp/german.svg" alt="german teacher">
+            </a>
+            <div data-cy="hp-lang-C0040" style="width:166px"
+                class="hp-language-item relative h-14 shrink-0 mr-4 pl-4 cursor-pointer rounded-3 flex flex-nowrap items-center hover:">
+                <img height="62" width="62" class="inline-block mr-2 rounded-2 language-icon"
+                    src="https://scdn.italki.com/ng/static/image/asgardhp/all.svg" alt="all teacher">
+            </div>
+
+        </div>
+        <br><br>
+
+    </body>
+
+    </html>
+
+
+
+    <div class="container">
+        <footer class="py-5">
+            <div class="row">
+                <div class="col-6 col-md-2 mb-3">
+                    <h5>Section</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-6 col-md-2 mb-3">
+                    <h5>Section</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-6 col-md-2 mb-3">
+                    <h5>Section</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-5 offset-md-1 mb-3">
+                    <form>
+                        <h5>Subscribe to our newsletter</h5>
+                        <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+                            <label for="newsletter1" class="visually-hidden">Email address</label>
+                            <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
+                            <button class="btn btn-warning" type="button">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+                <p>© 2024 Yazyk, Inc. All rights reserved.</p>
+                <ul class="list-unstyled d-flex">
+                    <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24">
+                                <use xlink:href="#twitter"></use>
+                            </svg></a></li>
+                    <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24">
+                                <use xlink:href="#instagram"></use>
+                            </svg></a></li>
+                    <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24">
+                                <use xlink:href="#facebook"></use>
+                            </svg></a></li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+
+
+</html>

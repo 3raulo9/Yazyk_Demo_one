@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+    <div id="random-image-container">
+        <div class="paragraphs-container">
+            <div>
+                <h1 class="glowing-text">Welcome to Yazyk</h1>
+                <p class="paragraph left">
+                    my website is all about language learning. It's going to have 10 lessons, and each lesson will have 5
+                    levels, though for the project I'll only be working on a couple of level 1 lessons. At the start of each
+                    lesson, users will have the option to listen to a 15-minute audio recording. The audio will include a
+                    dialogue at the beginning, and then the speaker will explain each new word and quiz the listener on the
+                    meaning of previous words. But if users want to skip the audio, they can, or they can disable it
+                    altogether in the settings.
+                </p>
+            </div>
+
+            <div>
+                <p class="paragraph right">
+                    After the audio section, users will be able to access the flashcard section, which will be related to
+                    the audio. Users can choose to play the audio again and view the words they're learning in 5 random
+                    sentences. I'm going to use an API that can translate text to allow users to see the translations of the
+                    words they're learning. For example, I could use the Yandex.Translate API or the DeepL API, which both
+                    provide high-quality translations. Users will be able to select the language they want to see the
+                    translation in, and there will be options for translation from dictionaries, Google Translation, Yandex
+                    Translation, and more.
+                </p>
+            </div>
+
+            <div>
+                <p class="paragraph right">
+                    Initially, the website will support several languages, such as Russian, Hebrew, Ukrainian, French, and
+                    Georgian. Users will need to register with an email address to access the website. While I'm considering
+                    adding a subscription option in the future, it's not currently part of the project scope.
+                </p>
+            </div>
+        </div>
+
+        <div id="image-container">
+            <div class="image-wrapper">
+                <div class="gradient-overlay-top"></div>
+                <div class="gradient-overlay-bottom"></div>
+                <img class="image" src="" alt="Random Image of a City">
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.get('/fetch_image', function (data) {
+                $('.image').attr('src', data);
+            });
+        });
+    </script>
+
+    </body>
+    </html>
+{% endblock %}
