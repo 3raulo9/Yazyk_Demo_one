@@ -2,42 +2,68 @@
     color: white;
 }
 
-
 /* Define the jumping animation with squish on landing */
 @keyframes jump {
-    0%, 100% { transform: translateY(0) scaleY(1); }
-    30% { transform: translateY(-20px); }
-    40% { transform: translateY(0) scaleY(1.1); }
-    50% { transform: translateY(-10px); }
-    60% { transform: translateY(0) scaleY(1.05); }
-    70%, 100% { transform: translateY(0) scaleY(1); }
+    0%, 100% {
+        transform: translateY(0) scaleY(1);
+    }
+    30% {
+        transform: translateY(-20px);
+    }
+    40% {
+        transform: translateY(0) scaleY(1.1);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(0) scaleY(1.05);
+    }
+    70%, 100% {
+        transform: translateY(0) scaleY(1);
+    }
 }
 
 /* Apply styles to both images */
 .logo-img,
 .logo-img-no-head {
-    width: 350px; /* Set the width to 350 pixels */
-    height: auto; /* Maintain aspect ratio */
-    position: absolute; /* Position the images */
+    width: 350px;
+    /* Set the width to 350 pixels */
+    height: auto;
+    /* Maintain aspect ratio */
+    position: absolute;
+    /* Position the images */
 }
 
 /* Adjust positioning and z-index */
 .logo-img {
-    z-index: 1; /* Set a higher z-index to layer on top */
+    z-index: 1;
+    /* Set a higher z-index to layer on top */
+    transform-origin: bottom;
+    /* Set the transform origin to the bottom */
+}
+
+.logo-img.animate {
     animation-name: jump;
-    animation-duration: 1s; /* Duration of the jump */
-    animation-iteration-count: infinite; /* Make it loop */
-    transform-origin: bottom; /* Set the transform origin to the bottom */
+    animation-duration: 1s;
+    /* Duration of the jump */
+    animation-iteration-count: 1;
+    /* Make it play only once */
 }
 
 .logo-img-no-head {
-    z-index: 2; /* Set a lower z-index to layer below */
-    transform: translateY(-5px); /* Adjust the vertical position */
+    z-index: 2;
+    /* Set a lower z-index to layer below */
+    transform: translateY(-5px);
+    /* Adjust the vertical position */
 }
+
+
 
 /* Additional space after the Yazyk logo */
 .YazykLogo {
-    margin-bottom: 20px; /* Add space after the Yazyk logo */
+    margin-bottom: 20px;
+    /* Add space after the Yazyk logo */
 }
 
 
@@ -193,6 +219,8 @@ a.noUnderline {
 
 
 .glowing-text {
-    color: black; /* Set text color to black */
-    text-shadow: 0 0 0px white, 0 0 2px white, 0 0 1px white, 0 0 1px white, 0 0 2px white, 0 0 60px white, 0 0 1px white; /* Apply white glow */
-  }
+    color: black;
+    /* Set text color to black */
+    text-shadow: 0 0 0px white, 0 0 2px white, 0 0 1px white, 0 0 1px white, 0 0 2px white, 0 0 60px white, 0 0 1px white;
+    /* Apply white glow */
+}
