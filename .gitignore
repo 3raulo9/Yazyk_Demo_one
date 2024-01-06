@@ -1,0 +1,7 @@
+# .gitignore
+
+# Ignore .env file
+.env
+
+# Ignore tests_for_stuff folder
+tests_for_stuff/
