@@ -13837,7 +13837,7 @@
             background-color: transparent;
             box-shadow: none;
             box-sizing: border-box;
-            color: #fff;
+            color: black;
             display: inline-flex;
             font: normal normal 400 1rem/1.25rem arial, sans-serif;
             margin-inline-end: 0;
@@ -13859,7 +13859,7 @@
 
         .ecl-menu:not(.ecl-menu--forced-mobile) .ecl-menu__item--current .ecl-menu__link,
         .ecl-menu:not(.ecl-menu--forced-mobile) .ecl-menu__link:active {
-            color: white
+            color: black
         }
 
         .ecl-menu:not(.ecl-menu--forced-mobile) .ecl-menu__link:focus-visible {

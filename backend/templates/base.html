@@ -15,6 +15,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
 </head>
 
@@ -31,7 +32,7 @@
         <div class="container-fluid">
             <a href="{{ url_for('home') }}" class="noUnderline">
                 <img src="{{ url_for('static', filename='images/pranik_logo_nobody.png') }}" alt="Yazyk Logo"
-                    class="logo-img">
+                    class="logo-img-yazyk">
                 <p class="YazykLogo">
                     <img src="{{ url_for('static', filename='images/pranik_logo_no_head.png') }}" alt="Yazyk Logo"
                         class="logo-img-no-head">
@@ -62,20 +63,25 @@
                             <li class="ecl-menu__item ecl-menu__item--current d-flex justify-content-end align-items-center"
                                 data-ecl-menu-item="" aria-expanded="false">
                                 <a href="{{ url_for('home') }}" class="ecl-menu__link ecl-menu__link--current"
-                                    data-ecl-menu-link="" style="width: 100%;">Home</a>
+                                    data-ecl-menu-link="" style="width: 100%;">
+                                    <i class="fas fa-home"></i> Home
+                                </a>
                             </li>
 
                             <li class="ecl-menu__item ecl-menu__item--has-children ecl-menu__item--col2">
-                                <a href="#" class="ecl-menu__link">Course</a>
+                                <a href="#" class="ecl-menu__link">
+                                    <i class="fas fa-book"></i> Course
+                                </a>
                             </li>
-
-
 
                             <li class="ecl-menu__item ecl-menu__item--has-children ecl-menu__item--col2" type="button"
                                 data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
                                 aria-controls="offcanvasBottom">
-                                <a href="#" class="ecl-menu__link">Interpret</a>
+                                <a href="#" class="ecl-menu__link">
+                                    <i class="fas fa-language"></i> Interpret
+                                </a>
                             </li>
+
 
 
 
@@ -150,56 +156,77 @@
                             </div>
 
 
-
-
+                            
                             <li class="ecl-menu__item">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-danger ecl-menu__link">Tools</button>
+                                    <button type="button" class="btn btn-danger ecl-menu__link">
+                                        <i class="fas fa-tools mr-1"></i> Tools
+                                    </button>
                                     <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split"
                                         data-bs-toggle="dropdown" aria-expanded="false">
                                         <span class="visually-hidden ecl-menu__link">Toggle Dropdown</span>
                                     </button>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="{{ url_for('interpret') }}">Interpret</a>
-                                        </li>
-
+                                        <li><a class="dropdown-item" href="{{ url_for('interpret') }}">Interpret</a></li>
                                         <li><a class="dropdown-item" href="#">Conversations</a></li>
                                         <li><a class="dropdown-item" href="#">Music</a></li>
                                         <li><a class="dropdown-item" href="#">Texts</a></li>
                                         <li><a class="dropdown-item" href="#">Learn Alphabets</a></li>
-
                                     </ul>
                                 </div>
-
                             </li>
+                            
                             <li class="ecl-menu__item ecl-menu__item--has-children ecl-menu__item--col2">
-                                <a href="#" class="ecl-menu__link">My Flashcards</a>
+                                <a href="#" class="ecl-menu__link">
+                                    <i class="fas fa-book-open"></i> My Flashcards
+                                </a>
                             </li>
+
+
 
                             <li class="ecl-menu__item">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-danger ecl-menu__link">Profile [-----]</button>
+                                    {% if 'username' in session %}
+                                    <!-- Only show logout when user is logged in -->
+                                    <button type="button" class="btn btn-danger ecl-menu__link">
+                                        <i class="fas fa-user"></i> Profile [-----]
+                                    </button>
                                     <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split"
                                         data-bs-toggle="dropdown" aria-expanded="false">
                                         <span class="visually-hidden ecl-menu__link">Toggle Dropdown</span>
                                     </button>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="{{ url_for('login') }}">Login</a></li>
-                                        <li><a class="dropdown-item" href="{{ url_for('register') }}">Register</a></li>
-                                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                                        <li><a class="dropdown-item" href="{{ url_for('logout') }}"><i
+                                                    class="fas fa-sign-out-alt"></i> Logout</a></li>
+                                        <li><a class="dropdown-item" href="#"><i class="fas fa-cog"></i> Settings</a>
+                                        </li>
                                         <li>
                                             <hr class="dropdown-divider">
                                         </li>
-                                        <li><a class="dropdown-item" href="#">About Yazyk</a></li>
+                                        <li><a class="dropdown-item" href="#"><i class="fas fa-info-circle"></i> About
+                                                Yazyk</a></li>
                                     </ul>
-                                </div>
-
+                                    {% else %}
+                            <li class="">
+                                <a href="{{ url_for('register') }}" class="ecl-menu__link"><i
+                                        class="fas fa-user-plus"></i> Sign up</a>
                             </li>
-                        </ul>
-                    </section>
-                </a>
+                            <li class="ecl-menu__item ecl-menu__item--has-children ecl-menu__item--col2">
+                                <a href="{{ url_for('login') }}" class="ecl-menu__link"><i
+                                        class="fas fa-sign-in-alt"></i> Login</a>
+                            </li>
+                            {% endif %}
             </div>
-        </nav>
+            </li>
+
+
+
+            </li>
+            </ul>
+            </section>
+            </a>
+    </div>
+    </nav>
     </div>
 
     <div id="content">

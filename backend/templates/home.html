@@ -48,13 +48,8 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $.get('/fetch_image', function (data) {
-                $('.image').attr('src', data);
-            });
-        });
-    </script>
+    <script src="{{ url_for('static', filename='js/images_that_change_in_home.js') }}"></script>
+
 
     </body>
     </html>

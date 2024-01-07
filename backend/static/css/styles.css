@@ -33,7 +33,7 @@
 }
 
 /* Apply styles to both images */
-.logo-img,
+.logo-img-yazyk,
 .logo-img-no-head {
     width: 350px;
     /* Set the width to 350 pixels */
@@ -44,14 +44,14 @@
 }
 
 /* Adjust positioning and z-index */
-.logo-img {
+.logo-img-yazyk {
     z-index: 1;
     /* Set a higher z-index to layer on top */
     transform-origin: bottom;
     /* Set the transform origin to the bottom */
 }
 
-.logo-img.animate {
+.logo-img-yazyk.animate {
     animation-name: jump;
     animation-duration: 1s;
     /* Duration of the jump */
@@ -254,4 +254,9 @@ a.noUnderline {
 
 .card-registration .select-arrow {
     top: 13px;
+}
+
+/* Custom CSS to change the color of the arrow */
+.dropdown-toggle::after {
+    border-top-color: #000; /* Set the color to black */
 }
