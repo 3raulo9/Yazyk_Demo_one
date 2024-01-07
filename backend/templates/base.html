@@ -30,9 +30,11 @@
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
             <a href="{{ url_for('home') }}" class="noUnderline">
-                <img src="{{ url_for('static', filename='images/pranik_logo_nobody.png') }}" alt="Yazyk Logo" class="logo-img">
+                <img src="{{ url_for('static', filename='images/pranik_logo_nobody.png') }}" alt="Yazyk Logo"
+                    class="logo-img">
                 <p class="YazykLogo">
-                    <img src="{{ url_for('static', filename='images/pranik_logo_no_head.png') }}" alt="Yazyk Logo" class="logo-img-no-head">
+                    <img src="{{ url_for('static', filename='images/pranik_logo_no_head.png') }}" alt="Yazyk Logo"
+                        class="logo-img-no-head">
                 </p>
             </a>
             <form class="d-flex" role="search">
@@ -41,7 +43,7 @@
             </form>
         </div>
     </nav>
-    
+
 
     <div id="block-ewcms-theme-horizontal-menu">
         <nav class="ecl-menu ecl-menu--group1 ecl-menu--transition" data-ecl-menu="" data-ecl-menu-max-lines="2"
@@ -69,6 +71,87 @@
 
 
 
+                            <li class="ecl-menu__item ecl-menu__item--has-children ecl-menu__item--col2" type="button"
+                                data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
+                                aria-controls="offcanvasBottom">
+                                <a href="#" class="ecl-menu__link">Interpret</a>
+                            </li>
+
+
+
+
+                            <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom"
+                                aria-labelledby="offcanvasBottomLabel">
+                                <div class="card-body">
+                                    <form action="/translate" method="POST" id="translation-form">
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" role="switch"
+                                                id="flexSwitchCheckChecked" checked>
+                                            <label class="form-check-label" for="flexSwitchCheckChecked">Autodetect
+                                                ⭐</label>
+                                        </div>
+                                        <br>
+                                        <div style="display: flex; justify-content: space-between;">
+                                            <input type="text" class="form-control" name="input_text" id="input-text"
+                                                placeholder="" aria-describedby="button-addon1" style="width: 45%;">
+                                            <input type="text" class="form-control" id="translated-placeholder"
+                                                placeholder="Translation" aria-describedby="button-addon1"
+                                                style="width: 45%;">
+                                            <div class="card-body">
+                                                <button class="btn btn-outline-secondary" type="button"
+                                                    id="button-french">English</button>
+                                                <button class="btn btn-outline-secondary" type="button"
+                                                    id="button-russian">Hebrew</button>
+                                                <button class="btn btn-outline-secondary" type="button"
+                                                    id="button-hebrew">Russian</button>
+
+                                                <div class="btn-group">
+                                                    <button class="btn btn-outline-secondary dropdown-toggle"
+                                                        type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                                                        aria-expanded="false">
+                                                        More languages
+                                                    </button>
+                                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                        <li><button class="btn btn-outline-secondary" type="button"
+                                                                id="button-ukrainian">French</button></li>
+                                                        <li><button class="btn btn-outline-secondary" type="button"
+                                                                id="button-arabic">Arabic</button></li>
+                                                        <li><button class="btn btn-outline-secondary" type="button"
+                                                                id="button-german">German</button></li>
+                                                        <li><button class="btn btn-outline-secondary" type="button"
+                                                                id="button-ukrainian">Ukrainian</button></li>
+                                                        <li><button class="btn btn-outline-secondary" type="button"
+                                                                id="button-ukrainian">Belarusian</button></li>
+                                                        <li><button class="btn btn-outline-secondary" type="button"
+                                                                id="button-greek">Greek</button>
+                                                        </li>
+                                                        <li><button class="btn btn-outline-secondary" type="button"
+                                                                id="button-greek">Amharic</button></li>
+                                                        <li><button class="btn btn-outline-secondary" type="button"
+                                                                id="button-greek">Spanish</button></li>
+                                                        <li><button class="btn btn-outline-secondary" type="button"
+                                                                id="button-greek">Yiddish</button></li>
+                                                        <li><button class="btn btn-outline-secondary" type="button"
+                                                                id="button-esperanto">Esperanto</button></li>
+
+                                                    </ul>
+                                                </div>
+
+
+
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <button type="submit" class="btn btn-outline-info"
+                                            id="button-detect">Translate</button>
+                                    </form>
+
+                                </div>
+                            </div>
+
+
+
+
                             <li class="ecl-menu__item">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-danger ecl-menu__link">Tools</button>
@@ -79,6 +162,7 @@
                                     <ul class="dropdown-menu">
                                         <li><a class="dropdown-item" href="{{ url_for('interpret') }}">Interpret</a>
                                         </li>
+
                                         <li><a class="dropdown-item" href="#">Conversations</a></li>
                                         <li><a class="dropdown-item" href="#">Music</a></li>
                                         <li><a class="dropdown-item" href="#">Texts</a></li>
@@ -238,7 +322,7 @@
             </div>
 
             <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
-                <p>© 2024 Yazyk, Inc. All rights reserved.</p>
+                <p>© 2024 Yazyk, Raul asadov. All rights reserved.</p>
                 <ul class="list-unstyled d-flex">
                     <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24">
                                 <use xlink:href="#twitter"></use>
@@ -258,7 +342,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/pranik_head_animation.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/interpret.js') }}"></script>
 </body>
 
 

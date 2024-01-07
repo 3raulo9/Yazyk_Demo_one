@@ -4,22 +4,30 @@
 
 /* Define the jumping animation with squish on landing */
 @keyframes jump {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0) scaleY(1);
     }
+
     30% {
         transform: translateY(-20px);
     }
+
     40% {
         transform: translateY(0) scaleY(1.1);
     }
+
     50% {
         transform: translateY(-10px);
     }
+
     60% {
         transform: translateY(0) scaleY(1.05);
     }
-    70%, 100% {
+
+    70%,
+    100% {
         transform: translateY(0) scaleY(1);
     }
 }
@@ -223,4 +231,27 @@ a.noUnderline {
     /* Set text color to black */
     text-shadow: 0 0 0px white, 0 0 2px white, 0 0 1px white, 0 0 1px white, 0 0 2px white, 0 0 60px white, 0 0 1px white;
     /* Apply white glow */
+}
+
+
+.gradient-custom {
+    /* fallback for old browsers */
+    background: #ffffff;
+
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to bottom , rgb(255,255,255), rgb(255,196,18) 50%, rgb(255, 255, 255));
+
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to bottom , rgb(255,255,255), rgb(255,196,18) 50%, rgb(255, 255, 255))
+}
+
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+    font-size: 1rem;
+    line-height: 2.15;
+    padding-left: .75em;
+    padding-right: .75em;
+}
+
+.card-registration .select-arrow {
+    top: 13px;
 }

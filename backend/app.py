@@ -48,14 +48,9 @@ def get_random_fact():
 
 
 @app.route("/")
-def base():
+def home():
     random_fact = get_random_fact()
     return render_template("home.html", random_fact=random_fact)
-
-
-@app.route("/")
-def home():
-    return render_template("home.html")
 
 
 @app.route("/register", methods=["GET", "POST"])
