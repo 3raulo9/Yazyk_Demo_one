@@ -1,5 +1,5 @@
 // Get the image element
-var img = document.querySelector('.logo-img');
+var img = document.querySelector('.logo-img-yazyk');
 
 // Function to add animation class
 function animateImage() {
