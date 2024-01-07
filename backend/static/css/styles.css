@@ -171,9 +171,7 @@ a.noUnderline {
     padding: 20px;
 }
 
-.paragraph {
-    /* Your existing styles for paragraphs */
-}
+
 
 #image-container {
     position: absolute;
@@ -259,4 +257,26 @@ a.noUnderline {
 /* Custom CSS to change the color of the arrow */
 .dropdown-toggle::after {
     border-top-color: #000; /* Set the color to black */
+}
+
+.asgardHP-lang-list {
+    display: flex;
+    overflow-x: auto;
+    width: 100%;
+}
+
+/* CSS for paragraph layout */
+
+/* Container for columns */
+.paragraphs-container {
+    display: flex;
+    justify-content: space-around; /* Adjust the alignment of paragraphs */
+    flex-wrap: wrap; /* Allows wrapping if the screen size is smaller */
+}
+
+/* Individual paragraph styles */
+.paragraph {
+    flex: 0 0 calc(30% - 20px); /* Adjust the width of each paragraph */
+    margin-bottom: 6px; /* Adjust spacing between paragraphs */
+    text-align: justify; /* Align text */
 }
