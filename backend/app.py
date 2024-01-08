@@ -2,13 +2,10 @@ from flask import Flask, render_template, request, redirect, url_for, jsonify, s
 from googletrans import Translator
 from dotenv import load_dotenv
 import mysql.connector
-import schedule
-import sqlite3
 import requests
 import random
 import json
 import os
-import time
 
 load_dotenv()
 
