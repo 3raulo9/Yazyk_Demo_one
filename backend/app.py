@@ -65,16 +65,20 @@ def home():
 def register():
     if request.method == "POST":
         username = request.form["username"]
-        password = request.form["password"]
+        password = request.form["password"]  # Retrieve other form fields similarly
         email = request.form["email"]
+
+        # Execute an SQL INSERT query to save user data
         cursor.execute(
             "INSERT INTO accounts (username, password, email) VALUES (%s, %s, %s)",
             (username, password, email),
         )
-        db_of_users.commit()
-        return redirect(url_for("login"))
+        db_of_users.commit()  # Commit the changes to the database
+
+        return redirect(url_for("login"))  # Redirect to login page after successful registration
 
     return render_template("register.html")
+
 
 
 @app.route("/login", methods=["GET", "POST"])
