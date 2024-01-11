@@ -20,7 +20,7 @@
 </head>
 
 <body>
-    
+
 
     <nav style="background-color: #333 !important;">
         <div class="container-fluid">
@@ -69,7 +69,7 @@
                             </li>
 
                             <li class="ecl-menu__item ecl-menu__item--has-children ecl-menu__item--col2">
-                                <a href="#" class="ecl-menu__link">
+                                <a href="{{ url_for('course') }}" class="ecl-menu__link">
                                     <i class="fas fa-book"></i> Course
                                 </a>
                             </li>
@@ -89,6 +89,7 @@
                             <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom"
                                 aria-labelledby="offcanvasBottomLabel">
                                 <div class="card-body">
+                                    {% if is_authenticated %}
                                     <form action="/translate" method="POST" id="translation-form">
                                         <div class="form-check form-switch">
                                             <input class="form-check-input" type="checkbox" role="switch"
@@ -151,12 +152,69 @@
                                         <button type="submit" class="btn btn-outline-info"
                                             id="button-detect">Translate</button>
                                     </form>
+                                    {% else %}
 
+                                    <body><br><br><br><br><br>
+                                        <div class="waviy">
+                                            <span style="--i:1">P</span>
+                                            <span style="--i:2">l</span>
+                                            <span style="--i:3">e</span>
+                                            <span style="--i:4">a</span>
+                                            <span style="--i:5">s</span>
+                                            <span style="--i:6">e</span>
+                                            <span style="--i:7"> </span>
+                                            <span style="--i:7"> </span>
+                                            <span style="--i:8">l</span>
+                                            <span style="--i:9">o</span>
+                                            <span style="--i:10">g</span>
+                                            <span style="--i:11"> </span>
+                                            <span style="--i:11"> </span>
+                                            <span style="--i:12">i</span>
+                                            <span style="--i:13">n</span>
+                                            <span style="--i:14"> </span>
+                                            <span style="--i:14"> </span>
+                                            <span style="--i:15">t</span>
+                                            <span style="--i:16">o</span>
+                                            <span style="--i:17"> </span>
+                                            <span style="--i:17"> </span>
+                                            <span style="--i:18">a</span>
+                                            <span style="--i:19">c</span>
+                                            <span style="--i:20">c</span>
+                                            <span style="--i:21">e</span>
+                                            <span style="--i:22">s</span>
+                                            <span style="--i:23">s</span>
+                                            <span style="--i:24"> </span>
+                                            <span style="--i:24"> </span>
+                                            <span style="--i:25">t</span>
+                                            <span style="--i:26">h</span>
+                                            <span style="--i:27">e</span>
+                                            <span style="--i:28"> </span>
+                                            <span style="--i:28"> </span>
+                                            <span style="--i:29">t</span>
+                                            <span style="--i:30">r</span>
+                                            <span style="--i:31">a</span>
+                                            <span style="--i:32">n</span>
+                                            <span style="--i:33">s</span>
+                                            <span style="--i:34">l</span>
+                                            <span style="--i:35">a</span>
+                                            <span style="--i:36">t</span>
+                                            <span style="--i:37">i</span>
+                                            <span style="--i:38">o</span>
+                                            <span style="--i:39">n</span>
+                                            <span style="--i:40"> </span>
+                                            <span style="--i:40"> </span>
+                                            <span style="--i:41">f</span>
+                                            <span style="--i:42">o</span>
+                                            <span style="--i:43">r</span>
+                                            <span style="--i:44">m</span>
+                                            <span style="--i:45">.</span>
+                                        </div>
+                                    </body>
+                                    {% endif %}
                                 </div>
                             </div>
 
 
-                            
                             <li class="ecl-menu__item">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-danger ecl-menu__link">
@@ -167,7 +225,8 @@
                                         <span class="visually-hidden ecl-menu__link">Toggle Dropdown</span>
                                     </button>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="{{ url_for('interpret') }}">Interpret</a></li>
+                                        <li><a class="dropdown-item" href="{{ url_for('interpret') }}">Interpret</a>
+                                        </li>
                                         <li><a class="dropdown-item" href="#">Conversations</a></li>
                                         <li><a class="dropdown-item" href="#">Music</a></li>
                                         <li><a class="dropdown-item" href="#">Texts</a></li>
@@ -175,9 +234,9 @@
                                     </ul>
                                 </div>
                             </li>
-                            
+
                             <li class="ecl-menu__item ecl-menu__item--has-children ecl-menu__item--col2">
-                                <a href="#" class="ecl-menu__link">
+                                <a href="{{ url_for('flashcards') }}" class="ecl-menu__link">
                                     <i class="fas fa-book-open"></i> My Flashcards
                                 </a>
                             </li>
@@ -188,25 +247,29 @@
                                 <div class="btn-group">
                                     {% if 'username' in session %}
                                     <!-- Only show logout when user is logged in -->
+                                    <!-- Add this button to your base.html file where you want the link to the profile page -->
                                     <button type="button" class="btn btn-danger ecl-menu__link">
-                                        <i class="fas fa-user"></i> Profile [-----]
-                                    </button>
-                                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                        <span class="visually-hidden ecl-menu__link">Toggle Dropdown</span>
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="{{ url_for('logout') }}"><i
-                                                    class="fas fa-sign-out-alt"></i> Logout</a></li>
-                                        <li><a class="dropdown-item" href="#"><i class="fas fa-cog"></i> Settings</a>
-                                        </li>
-                                        <li>
-                                            <hr class="dropdown-divider">
-                                        </li>
-                                        <li><a class="dropdown-item" href="#"><i class="fas fa-info-circle"></i> About
-                                                Yazyk</a></li>
-                                    </ul>
-                                    {% else %}
+                            <li><a class="dropdown-item" href="{{ url_for('profile') }}"><i
+                                        class="fas fa-sign-out-alt"></i> Profile</a></li>
+
+                            </button>
+
+                            <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="visually-hidden ecl-menu__link">Toggle Dropdown</span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{ url_for('logout') }}"><i
+                                            class="fas fa-sign-out-alt"></i> Logout</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-cog"></i> Settings</a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-info-circle"></i> About
+                                        Yazyk</a></li>
+                            </ul>
+                            {% else %}
                             <li class="">
                                 <a href="{{ url_for('register') }}" class="ecl-menu__link"><i
                                         class="fas fa-user-plus"></i> Sign up</a>
