@@ -237,10 +237,10 @@ a.noUnderline {
     background: #ffffff;
 
     /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to bottom , rgb(255,255,255), rgb(255,196,18) 50%, rgb(255, 255, 255));
+    background: -webkit-linear-gradient(to bottom, rgb(255, 255, 255), rgb(255, 196, 18) 50%, rgb(255, 255, 255));
 
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to bottom , rgb(255,255,255), rgb(255,196,18) 50%, rgb(255, 255, 255))
+    background: linear-gradient(to bottom, rgb(255, 255, 255), rgb(255, 196, 18) 50%, rgb(255, 255, 255))
 }
 
 .card-registration .select-input.form-control[readonly]:not([disabled]) {
@@ -256,7 +256,8 @@ a.noUnderline {
 
 /* Custom CSS to change the color of the arrow */
 .dropdown-toggle::after {
-    border-top-color: #000; /* Set the color to black */
+    border-top-color: #000;
+    /* Set the color to black */
 }
 
 .asgardHP-lang-list {
@@ -270,13 +271,55 @@ a.noUnderline {
 /* Container for columns */
 .paragraphs-container {
     display: flex;
-    justify-content: space-around; /* Adjust the alignment of paragraphs */
-    flex-wrap: wrap; /* Allows wrapping if the screen size is smaller */
+    justify-content: space-around;
+    /* Adjust the alignment of paragraphs */
+    flex-wrap: wrap;
+    /* Allows wrapping if the screen size is smaller */
 }
 
 /* Individual paragraph styles */
 .paragraph {
-    flex: 0 0 calc(30% - 20px); /* Adjust the width of each paragraph */
-    margin-bottom: 6px; /* Adjust spacing between paragraphs */
-    text-align: justify; /* Align text */
+    flex: 0 0 calc(30% - 20px);
+    /* Adjust the width of each paragraph */
+    margin-bottom: 6px;
+    /* Adjust spacing between paragraphs */
+    text-align: justify;
+    /* Align text */
+}
+
+
+
+
+
+
+
+.waviy {
+    padding-left: 8%;
+    position: relative;
+    -webkit-box-reflect: below -20px linear-gradient(transparent, rgba(0, 0, 0, .2));
+    font-size: 40px;
+    /* Adjust the font size as needed */
+}
+
+.waviy span {
+    font-family: Andale Mono, monospace	;
+    position: relative;
+    display: inline-block;
+    color: #ffc412;
+    text-transform: uppercase;
+    animation: waviy 1s infinite;
+    animation-delay: calc(.1s * var(--i));
+}
+
+@keyframes waviy {
+
+    0%,
+    7%,
+    7% {
+        transform: translateY(0)
+    }
+
+    55% {
+        transform: translateY(-15px)
+    }
 }
