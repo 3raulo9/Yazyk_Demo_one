@@ -60,7 +60,7 @@ def login_required(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
         if "username" not in session:
-            return redirect(url_for("register"))
+            return redirect(url_for("login"))
         return func(*args, **kwargs)
     return wrapper
 

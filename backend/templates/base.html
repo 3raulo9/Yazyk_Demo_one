@@ -9,6 +9,7 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='css/theEuStyles.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/styles_loader.css') }}" rel="stylesheet">
 
     <link rel="stylesheet" media="all"
         href="/sites/default/files/css/css_J-7wAGc7RBWbbcG7KF9pigwqhelpp8j9s2FhPU4Ih58.css?delta=0&amp;language=en&amp;theme=ewcms_theme&amp;include=eJxVj0GOwzAIRS_kqY9kYYcmSBgswGlz-2Y0aatZsOB9eALFEht2zE37UEGJwlQN7Cg4k2J5YA1V9rzYHMC3d__jHSxYYUFLfnhgzxUcf3f-jPgMNAEuvq9fOowkEj5a94vcCXkpn2lqKlfeJwcxyTqB84WgbSSnzECcIUiliJ437_hPiq34tB2PNMBgNRjb54UvuU0ZszL5hkvyAf0syVrv0xsEvgB0sHGk" />
@@ -16,10 +17,21 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-
 </head>
 
 <body>
+    <div class="loading-container" id="loadingContainer">
+        <span class="loader"></span>
+
+        <div class="loading-spinner">
+            <!-- Your resized GIF here using Flask's url_for -->
+            <img class="loading-gif" src="{{ url_for('static', filename='images/cute_cat_animation.gif') }}" alt="Loading GIF">
+            <span class="loader2"></span>
+        </div>
+    </div>
+    
+    
+
 
 
     <nav style="background-color: #333 !important;">
@@ -425,6 +437,8 @@
         crossorigin="anonymous"></script>
     <script src="{{ url_for('static', filename='js/pranik_head_animation.js') }}"></script>
     <script src="{{ url_for('static', filename='js/interpret.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/loading_script.js') }}"></script>
+
 </body>
 
 
