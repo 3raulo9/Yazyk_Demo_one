@@ -1,5 +1,6 @@
 from functools import wraps
 from flask import Flask, render_template, request, redirect, url_for, jsonify, session
+import jwt
 from googletrans import Translator
 from dotenv import load_dotenv
 import mysql.connector
@@ -14,14 +15,15 @@ db_of_users = mysql.connector.connect(
     host=os.getenv("DB_HOST"),
     user=os.getenv("DB_USER"),
     password=os.getenv("DB_PASSWORD"),
-    database="users_db",  # Make sure to set this to your database name
+    database="users_db",
 )
 cursor = db_of_users.cursor()
 
 app = Flask(__name__)
-app.secret_key = "your_secret_key_here"  # Change this to a secure secret key
+app.secret_key = "your_secret_key_here"
+app.config['JWT_SECRET_KEY'] = 'your_jwt_secret_key_here'
 
-selected_language = "en"  # Default language
+selected_language = "en"
 
 @app.context_processor
 def inject_auth_status():
@@ -36,21 +38,17 @@ def get_random_fact():
     )
     cur = con.cursor()
 
-    # Count the number of rows in the table
     cur.execute("SELECT COUNT(*) FROM facts")
     count = cur.fetchone()[0]
 
-    # If there are no rows, return a message
     if count == 0:
         return "No facts found in the database"
 
-    # Select a random fact
     cur.execute("SELECT id, title FROM facts ORDER BY RAND() LIMIT 1")
     fact = cur.fetchone()
 
     con.close()
 
-    # Check if a fact was found and return it as a string
     if fact:
         return f"{fact[1]}"
     else:
@@ -59,9 +57,16 @@ def get_random_fact():
 def login_required(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
-        if "username" not in session:
+        token = session.get('token')
+        if not token:
             return redirect(url_for("login"))
-        return func(*args, **kwargs)
+        try:
+            data = jwt.decode(token, app.config['JWT_SECRET_KEY'], algorithms=['HS256'])
+            return func(*args, **kwargs)
+        except jwt.ExpiredSignatureError:
+            return redirect(url_for("login"))
+        except jwt.InvalidTokenError:
+            return redirect(url_for("login"))
     return wrapper
 
 @app.route("/")
@@ -98,6 +103,12 @@ def login():
         user = cursor.fetchone()
         if user:
             session["username"] = username
+            token = jwt.encode({'username': username}, app.config['JWT_SECRET_KEY'], algorithm='HS256')
+            session['token'] = token
+
+            # with that Print you can print the token to the console
+            # print(f"JWT Token for {username}: {token}")
+
             return redirect(url_for("home"))
 
     return render_template("login.html")
@@ -105,12 +116,10 @@ def login():
 @app.route("/logout")
 def logout():
     session.pop("username", None)
+    session.pop("token", None)
     return redirect(url_for("home"))
 
-@app.route("/interpret")
-@login_required
-def interpret():
-    return render_template("interpret.html")
+
 
 def save_to_json(data):
     if not os.path.exists("users"):
@@ -125,11 +134,9 @@ def set_language():
     global selected_language
     if request.method == "POST":
         data = request.get_json()
-        selected_language = data.get(
-            "language", "fr"
-        )
-        return jsonify({"status": "success", "selected_language": selected_language})
-    return jsonify({"status": "failed"})
+        selected_language = data.get('language', 'fr')  # Get the selected language from the request
+        return jsonify({'status': 'success', 'selected_language': selected_language})
+    return jsonify({'status': 'failed'})
 
 @app.route("/translate", methods=["POST"])
 def translate():
@@ -214,5 +221,6 @@ def flashcards():
 @login_required
 def course():
     return render_template("course.html")
+
 if __name__ == "__main__":
     app.run(debug=True)
