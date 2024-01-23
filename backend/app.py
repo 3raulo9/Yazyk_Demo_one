@@ -74,6 +74,12 @@ def home():
     random_fact = get_random_fact()
     return render_template("home.html", random_fact=random_fact)
 
+def language_dropdown():
+    return render_template('language_dropdown.html')
+
+def PLEASE_LOG_IN_letters():
+    return render_template('PLEASE_LOG_IN_letters.html')
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
